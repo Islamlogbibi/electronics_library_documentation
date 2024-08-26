@@ -617,10 +617,44 @@ float total_resistance = Resistance_Parallel(resistances);
                 <p><strong>Returns:</strong> The power factor of the system, a dimensionless number between 0 and 1.</p>
                 <div class="example">
                     <pre><code>float pf = Power_factor(300.0, 400.0);
-            // pf = 300.0 / 400.0 = 0.75</code></pre>
+// pf = 300.0 / 400.0 = 0.75</code></pre>
                 </div>
             </div>
             
+        </div>
+        <div class="content">
+            <h2>Namespace: units_conv</h2>
+            <p>This namespace contains functions for converting between different units of voltage, current, resistance, power, capacitance, inductance, conductance, and energy.</p>
+    
+            <h2>Voltage Conversions</h2>
+            <ul>
+                <li><code>VoltsToMillivolts(double volts)</code>: Converts volts to millivolts. 1 V = 1000 mV</li>
+                <li><code>VoltsToKilovolts(double volts)</code>: Converts volts to kilovolts. 1 V = 0.001 kV</li>
+                <li><code>VoltsToMicrovolts(double volts)</code>: Converts volts to microvolts. 1 V = 1,000,000 µV</li>
+                <li><code>MillivoltsToVolts(double millivolts)</code>: Converts millivolts to volts. 1 mV = 0.001 V</li>
+                <li><code>KilovoltsToVolts(double kilovolts)</code>: Converts kilovolts to volts. 1 kV = 1000 V</li>
+                <li><code>MicrovoltsToVolts(double microvolts)</code>: Converts microvolts to volts. 1 µV = 0.000001 V</li>
+            </ul>
+    
+            <h2>Current Conversions</h2>
+            <ul>
+                <li><code>AmperesToMilliamperes(double amperes)</code>: Converts amperes to milliamperes. 1 A = 1000 mA</li>
+                <li><code>AmperesToKiloamperes(double amperes)</code>: Converts amperes to kiloamperes. 1 A = 0.001 kA</li>
+                <li><code>AmperesToMicroamperes(double amperes)</code>: Converts amperes to microamperes. 1 A = 1,000,000 µA</li>
+                <li><code>MilliamperesToAmperes(double milliamperes)</code>: Converts milliamperes to amperes. 1 mA = 0.001 A</li>
+                <li><code>KiloamperesToAmperes(double kiloamperes)</code>: Converts kiloamperes to amperes. 1 kA = 1000 A</li>
+                <li><code>MicroamperesToAmperes(double microamperes)</code>: Converts microamperes to amperes. 1 µA = 0.000001 A</li>
+            </ul>
+    
+            <h2>Resistance Conversions</h2>
+            <ul>
+                <li><code>OhmsToKiloohms(double ohms)</code>: Converts ohms to kiloohms. 1 Ω = 0.001 kΩ</li>
+                <li><code>OhmsToMegaohms(double ohms)</code>: Converts ohms to megaohms. 1 Ω = 0.000001 MΩ</li>
+                <li><code>OhmsToMilliohms(double ohms)</code>: Converts ohms to milliohms. 1 Ω = 1000 mΩ</li>
+                <li><code>KiloohmsToOhms(double kiloohms)</code>: Converts kiloohms to ohms. 1 kΩ = 1000 Ω</li>
+                <li><code>MegaohmsToOhms(double megaohms)</code>: Converts megaohms to ohms. 1 MΩ = 1,000,000 Ω</li>
+                <li><code>MilliohmsToOhms(double milliohms)</code>: Converts milliohms to ohms. 1 mΩ = 0.001 Ω</li>
+            </ul>
         </div>
     </div>
 
