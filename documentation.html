@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics.h Library Documentation</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 2.5rem;
+            color: #444;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #008cba;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #008cba;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Lists */
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Code and pre styles */
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f4;
+            color: #c7254e;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+
+        /* Example box */
+        .example {
+            background-color: #f4f4f4;
+            border-left: 4px solid #008cba;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        /* Links */
+        a {
+            color: #008cba;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #777;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Electronics.h Library Documentation</h1>
+
+        <div class="section">
+            <h2>Overview</h2>
+            <p>The <code>Electronics.h</code> library is a C++ header file designed to assist with calculations related to electrical engineering. 
+            It provides functions for computing various electrical properties such as voltage, current, and charge, and includes constants and macros for 
+            commonly used values in the field.</p>
+        </div>
+
+        <div class="section">
+            <h2>Constants and Macros</h2>
+            <p>The library defines several constants and macros for use in electrical calculations:</p>
+            <ul>
+                <li><strong>Circuit Types:</strong>
+                    <ul>
+                        <li><code>DC_circuit</code>: <code>0x6C058E04</code> - Identifier for DC circuits.</li>
+                        <li><code>AC_circuit</code>: <code>0xC8684A69</code> - Identifier for AC circuits.</li>
+                        <li><code>AC_circuit_single_phase</code>: <code>0x42EA42DC</code> - Identifier for single-phase AC circuits.</li>
+                        <li><code>AC_cicuit_3_phase</code>: <code>0x5671E6E5</code> - Identifier for three-phase AC circuits.</li>
+                        <li><code>line_to_line</code>: <code>0xF855055B</code> - Identifier for line-to-line circuits.</li>
+                        <li><code>line_to_zero</code>: <code>0x0004</code> - Identifier for line-to-zero circuits.</li>
+                    </ul>
+                </li>
+                <li><strong>Physical Constants:</strong>
+                    <ul>
+                        <li><code>RMS_Const</code>: <code>0.707</code> - The RMS constant used in AC voltage calculations.</li>
+                        <li><code>Pi</code>: <code>3.14</code> - The mathematical constant π.</li>
+                        <li><code>electron_charge</code>: <code>-1.602 * 10^-19</code> - The charge of an electron (in coulombs).</li>
+                        <li><code>prodton_charge</code>: <code>1.602 * 10^-19</code> - The charge of a proton (in coulombs).</li>
+                        <li><code>coulomb_constant</code>: <code>8.988 * 10^9</code> - The Coulomb constant (in N·m²/C²).</li>
+                    </ul>
+                </li>
+                <li><strong>Miscellaneous:</strong>
+                    <ul>
+                        <li><code>R_t</code>: <code>0xE9864CD9</code> - Custom identifier.</li>
+                        <li><code>I_1</code>: <code>0x4478917C</code> - Custom identifier.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Functions</h2>
+            
+            
+
+            <div>
+                <h3>1. float E_Voltage_v1(float φ2, float φ1)</h3>
+                <p><strong>Description:</strong> Calculates the voltage as the difference between two electric potentials.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>φ2</code>: Electric potential at point 2 (in volts).</li>
+                    <li><code>φ1</code>: Electric potential at point 1 (in volts).</li>
+                </ul>
+                <p><strong>Returns:</strong> The voltage (in volts).</p>
+                <div class="example">
+                    <pre><code>float voltage = E_Voltage_v1(10.0, 5.0);
+// voltage = 5.0 volts</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>2. float E_Voltage_v2(float E, float Q)</h3>
+                <p><strong>Description:</strong> Calculates the voltage using energy and electric charge.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>E</code>: Energy in joules (J).</li>
+                    <li><code>Q</code>: Electric charge in coulombs (C).</li>
+                </ul>
+                <p><strong>Returns:</strong> The voltage (in volts).</p>
+                <div class="example">
+                    <pre><code>float voltage = E_Voltage_v2(10.0, 2.0);
+// voltage = 5.0 volts</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>3. float Voltage_Series(vector<float> v_series)</h3>
+                <p><strong>Description:</strong> Calculates the total voltage in a series circuit.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>v_series</code>: A vector of voltages in the series circuit (in volts).</li>
+                </ul>
+                <p><strong>Returns:</strong> The total voltage (in volts).</p>
+                <div class="example">
+                    <pre><code>vector<float> voltages = {3.0, 4.0, 5.0};
+float total_voltage = Voltage_Series(voltages);
+// total_voltage = 12.0 volts</code></pre>
+                </div>
+            </div>
+            
+
+            <div>
+                <h3>4. float Voltage_divider(float vt, float Ri, vector<float> R_vector)</h3>
+                <p><strong>Description:</strong> Calculates the voltage across a specific resistor in a series circuit using the voltage divider rule.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>vt</code>: Total voltage applied to the series circuit (in volts).</li>
+                    <li><code>R_vector</code>: Vector of resistances in the series circuit (in ohms).</li>
+                    <li><code>Ri</code>: Resistance across which the voltage is calculated (in ohms).</li>
+                </ul>
+                <p><strong>Returns:</strong> The voltage across the specified resistor (in volts).</p>
+                <div class="example">
+                    <pre><code>vector<float> resistances = {10.0, 20.0, 30.0};
+float voltage = Voltage_divider(12.0, resistances, 10.0);
+// voltage = 2.0 volts</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>5. float Voltage_ohm(float i, float r, float Iz, float Z, int circuit)</h3>
+                <p><strong>Description:</strong> Calculates the voltage drop using Ohm's Law, depending on whether the circuit is DC or AC.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>i</code>: Current through the resistor in DC circuit (in amperes).</li>
+                    <li><code>r</code>: Resistance in the DC circuit (in ohms).</li>
+                    <li><code>Iz</code>: Current through the load in AC circuit (in amperes).</li>
+                    <li><code>Z</code>: Impedance in the AC circuit (in ohms).</li>
+                    <li><code>circuit</code>: Type of circuit (DC or AC).</li>
+                </ul>
+                <p><strong>Returns:</strong> The voltage drop (in volts).</p>
+                <div class="example">
+                    <pre><code>float voltage = Voltage_ohm(2.0, 6.0, 2.0, 3.0, DC_circuit);
+// voltage = 12.0 volts</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>6. float momentry_Voltage(float MaximalVoltage, float w, float θ, float t)</h3>
+                <p><strong>Description:</strong> Calculates the momentary voltage at a specific time in an AC circuit using the sine wave equation.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>MaximalVoltage</code>: Maximum voltage (amplitude) of the sine wave (in volts).</li>
+                    <li><code>w</code>: Angular frequency (in radians per second).</li>
+                    <li><code>θ</code>: Phase of the sine wave (in radians).</li>
+                    <li><code>t</code>: Time at which the voltage is calculated (in seconds).</li>
+                </ul>
+                <p><strong>Returns:</strong> The momentary voltage (in volts).</p>
+                <div class="example">
+                    <pre><code>float voltage = momentry_Voltage(10.0, 50.0, 0.0, 0.02);
+// voltage = 10.0 volts</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>7. float RMS_Voltage(float Vmax)</h3>
+                <p><strong>Description:</strong> Calculates the RMS (Root Mean Square) voltage for a sine wave.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>Vmax</code>: Maximum voltage (amplitude) of the sine wave (in volts).</li>
+                </ul>
+                <p><strong>Returns:</strong> The RMS voltage (in volts).</p>
+                <div class="example">
+                    <pre><code>float rms_voltage = RMS_Voltage(10.0);
+// rms_voltage = 7.07 volts</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>8. float VoltageP_P(float Vmax)</h3>
+                <p><strong>Description:</strong> Calculates the peak-to-peak voltage for a sine wave.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>Vmax</code>: Maximum voltage (amplitude) of the sine wave (in volts).</li>
+                </ul>
+                <p><strong>Returns:</strong> The peak-to-peak voltage (in volts).</p>
+                <div class="example">
+                    <pre><code>float peak_to_peak_voltage = VoltageP_P(10.0);
+// peak_to_peak_voltage = 20.0 volts</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>9. float Electric_Current(float q, float t)</h3>
+                <p><strong>Description:</strong> Calculates the electric current given charge and time.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>q</code>: Electric charge in coulombs (C).</li>
+                    <li><code>t</code>: Time in seconds (s).</li>
+                </ul>
+                <p><strong>Returns:</strong> The electric current (in amperes).</p>
+                <div class="example">
+                    <pre><code>float current = Electric_Current(10.0, 2.0);
+            // current = 5.0 amperes</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>10. float Electric_current_Ohm(float V, float R)</h3>
+                <p><strong>Description:</strong> Calculates the current in a circuit using Ohm's Law.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>V</code>: Voltage across the circuit (in volts).</li>
+                    <li><code>R</code>: The resistance of the circuit (in ohms).</li>
+                </ul>
+                <p><strong>Returns:</strong> The current (in amperes).</p>
+                <div class="example">
+                    <pre><code>float current = Electric_current_Ohm(12.0, 6.0);
+// current = 2.0 amperes</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>11. float Current_parallel(vector<float> c_parallel)</h3>
+                <p><strong>Description:</strong> Calculates the total current in a parallel circuit.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>c_parallel</code>: A vector of individual currents in parallel branches (in amperes).</li>
+                </ul>
+                <p><strong>Returns:</strong> The total current (in amperes).</p>
+                <div class="example">
+                    <pre><code>vector<float> currents = {1.0, 2.0, 3.0};
+            float total_current = Current_parallel(currents);
+            // total_current = 6.0 amperes</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>12. float current_div(float R1, float R2, float R3, float It, float Rt, int type)</h3>
+                <p><strong>Description:</strong> Calculates either the equivalent resistance or the current in a specific branch of a current divider circuit.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>R1</code>: Resistance of the first branch (in ohms).</li>
+                    <li><code>R2</code>: Resistance of the second branch (in ohms).</li>
+                    <li><code>R3</code>: Resistance of the third branch (in ohms).</li>
+                    <li><code>It</code>: Total current entering the parallel circuit (in amperes).</li>
+                    <li><code>Rt</code>: Total equivalent resistance of the parallel branches (in ohms).</li>
+                    <li><code>type</code>: Indicates whether to calculate equivalent resistance (<code>R_t</code>) or current in the first branch (<code>I_1</code>).</li>
+                </ul>
+                <p><strong>Returns:</strong> The equivalent resistance (in ohms) or the current in the first branch (in amperes), depending on the type.</p>
+                <div class="example">
+                    <pre><code>float resistance = current_div(10.0, 20.0, 30.0, 5.0, 8.0, R_t);
+// resistance = 12.0 ohms
+
+float current = current_div(10.0, 20.0, 30.0, 5.0, 8.0, I_1);
+// current = 2.67 amperes</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>13. float Alterent_Current(float Vz, float Z)</h3>
+                <p><strong>Description:</strong> Calculates the alternating current (AC) given voltage and impedance.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>Vz</code>: Voltage across the impedance (in volts).</li>
+                    <li><code>Z</code>: Impedance (in ohms).</li>
+                </ul>
+                <p><strong>Returns:</strong> The alternating current (in amperes).</p>
+                <div class="example">
+                    <pre><code>float AC = Alterent_Current(120.0, 30.0);
+// AC = 4.0 amperes</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>14. float Angular_Frequancy(float frequancy)</h3>
+                <p><strong>Description:</strong> Calculates the angular frequency given the frequency of an AC signal.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>frequancy</code>: Frequency of the AC signal (in hertz).</li>
+                </ul>
+                <p><strong>Returns:</strong> The angular frequency (in radians per second).</p>
+                <div class="example">
+                    <pre><code>float w = Angular_Frequancy(50.0);
+// w = 314.16 radians per second</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>15. float Mumentary_currant(float Ipeak, float w, float temp, float θ)</h3>
+                <p><strong>Description:</strong> Calculates the instantaneous current in an AC circuit.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>Ipeak</code>: Peak current (in amperes).</li>
+                    <li><code>w</code>: Angular frequency (in radians per second).</li>
+                    <li><code>temp</code>: Time at which current is calculated (in seconds).</li>
+                    <li><code>θ</code>: Phase angle (in radians).</li>
+                </ul>
+                <p><strong>Returns:</strong> The instantaneous current (in amperes).</p>
+                <div class="example">
+                    <pre><code>float i_t = Mumentary_currant(10.0, 314.16, 0.01, 0.0);
+// i_t = 9.5 amperes</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>16. float RMS_current(float Ipeak)</h3>
+                <p><strong>Description:</strong> Calculates the RMS (Root Mean Square) current given the peak current.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>Ipeak</code>: Peak current (in amperes).</li>
+                </ul>
+                <p><strong>Returns:</strong> The RMS current (in amperes).</p>
+                <div class="example">
+                    <pre><code>float rms = RMS_current(10.0);
+// rms = 7.07 amperes</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>17. float Ip_p(float Ipeak)</h3>
+                <p><strong>Description:</strong> Calculates the peak-to-peak current given the peak current.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>Ipeak</code>: Peak current (in amperes).</li>
+                </ul>
+                <p><strong>Returns:</strong> The peak-to-peak current (in amperes).</p>
+                <div class="example">
+                    <pre><code>float i_pp = Ip_p(10.0);
+// i_pp = 20.0 amperes</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>18. float Resistance(float ρ, float l, float a)</h3>
+                <p><strong>Description:</strong> Calculates the electrical resistance of a material given its resistivity, length, and cross-sectional area.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>ρ</code>: Resistivity of the material (in ohm-meters).</li>
+                    <li><code>l</code>: Length of the material (in meters).</li>
+                    <li><code>a</code>: Cross-sectional area of the material (in square meters).</li>
+                </ul>
+                <p><strong>Returns:</strong> The resistance (in ohms).</p>
+                <div class="example">
+                    <pre><code>float r = Resistance(1.68e-8, 2.0, 1e-6);
+// r = 0.0336 ohms</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>19. float Resistance_Ohm(float v, float i)</h3>
+                <p><strong>Description:</strong> Calculates the electrical resistance using Ohm's Law.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>v</code>: Voltage across the resistor (in volts).</li>
+                    <li><code>i</code>: Current flowing through the resistor (in amperes).</li>
+                </ul>
+                <p><strong>Returns:</strong> The resistance (in ohms).</p>
+                <div class="example">
+                    <pre><code>float r = Resistance_Ohm(10.0, 2.0);
+// r = 5.0 ohms</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>20. float Temperature_eff(float r1, float α, float T1, float T2)</h3>
+                <p><strong>Description:</strong> Calculates the effective resistance at a new temperature.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>r1</code>: Initial resistance at temperature <code>T1</code> (in ohms).</li>
+                    <li><code>α</code>: Temperature coefficient of resistance (per degree Celsius).</li>
+                    <li><code>T1</code>: Initial temperature (in degrees Celsius).</li>
+                    <li><code>T2</code>: Final temperature (in degrees Celsius).</li>
+                </ul>
+                <p><strong>Returns:</strong> The resistance at temperature <code>T2</code> (in ohms).</p>
+                <div class="example">
+                    <pre><code>float r2 = Temperature_eff(100.0, 0.004, 20.0, 30.0);
+// r2 = 104.0 ohms</code></pre>
+                </div>
+            </div>
+
+            <div>
+                <h3>21. float Resistance_Series(vector<float> r_series)</h3>
+                <p><strong>Description:</strong> Calculates the total resistance in a series circuit.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>r_series</code>: A vector of resistances in the series circuit (in ohms).</li>
+                </ul>
+                <p><strong>Returns:</strong> The total resistance (in ohms).</p>
+                <div class="example">
+                    <pre><code>vector<float> resistances = {10.0, 20.0, 30.0};
+float total_resistance = Resistance_Series(resistances);
+// total_resistance = 60.0 ohms</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>22. float Resistance_Parallel(vector<float> r_parallel)</h3>
+                <p><strong>Description:</strong> Calculates the total resistance in a parallel circuit.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>r_parallel</code>: A vector of resistances in the parallel circuit (in ohms).</li>
+                </ul>
+                <p><strong>Returns:</strong> The total resistance (in ohms).</p>
+                <div class="example">
+                    <pre><code>vector<float> resistances = {10.0, 20.0, 30.0};
+float total_resistance = Resistance_Parallel(resistances);
+// total_resistance = 5.45 ohms</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>23. float power(string i, string r, float angle, int circuit, int type)</h3>
+                <p><strong>Description:</strong> Calculates the electrical power in different types of circuits, including AC and DC, based on the provided current, resistance, and phase angle.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>i</code>: Current as a string with units (e.g., "10amp").</li>
+                    <li><code>r</code>: Resistance as a string with units (e.g., "5ohm").</li>
+                    <li><code>angle</code>: Phase angle in radians (used for AC circuits).</li>
+                    <li><code>circuit</code>: Type of circuit (e.g., <code>AC_circuit_single_phase</code>, <code>DC_circuit</code>, <code>AC_circuit_3_phase</code>).</li>
+                    <li><code>type</code>: For 3-phase circuits, indicates whether it’s line-to-line or line-to-neutral (e.g., <code>line_to_line</code>, <code>line_to_zero</code>).</li>
+                </ul>
+                <p><strong>Returns:</strong> The calculated power (in watts). Returns <code>-1</code> if the input is invalid.</p>
+                <div class="example">
+                    <pre><code>float p = power("10amp", "5ohm", 0.5, AC_circuit_single_phase, 0);
+// p = 50.0 watts (assuming valid inputs and no errors)</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>24. float Power_Real(float Vrms, float Irms, float φ)</h3>
+                <p><strong>Description:</strong> Calculates the real power in an AC circuit using the root mean square (RMS) voltage and current, and the phase angle.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>Vrms</code>: RMS voltage (in volts).</li>
+                    <li><code>Irms</code>: RMS current (in amperes).</li>
+                    <li><code>φ</code>: Phase angle (in radians).</li>
+                </ul>
+                <p><strong>Returns:</strong> The real power (in watts).</p>
+                <div class="example">
+                    <pre><code>float real_power = Power_Real(220.0, 5.0, 0.5);
+// real_power = 968.9 watts</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>25. float Reactive_power(float Vrms, float Irms, float φ)</h3>
+                <p><strong>Description:</strong> Calculates the reactive power in an AC circuit using the RMS voltage and current, and the phase angle.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>Vrms</code>: RMS voltage (in volts).</li>
+                    <li><code>Irms</code>: RMS current (in amperes).</li>
+                    <li><code>φ</code>: Phase angle (in radians).</li>
+                </ul>
+                <p><strong>Returns:</strong> The reactive power (in VAR, Volt-Ampere Reactive).</p>
+                <div class="example">
+                    <pre><code>float reactive_power = Reactive_power(220.0, 5.0, 0.5);
+// reactive_power = 528.5 VAR</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>26. float Apparent_power(float Vrms, float Irms)</h3>
+                <p><strong>Description:</strong> Calculates the apparent power in an AC circuit using the RMS voltage and current.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>Vrms</code>: RMS voltage (in volts).</li>
+                    <li><code>Irms</code>: RMS current (in amperes).</li>
+                </ul>
+                <p><strong>Returns:</strong> The apparent power (in VA, Volt-Amperes).</p>
+                <div class="example">
+                    <pre><code>float apparent_power = Apparent_power(220.0, 5.0);
+// apparent_power = 1100.0 VA</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>27. float relation_real_reactive_apparent(string i, string r)</h3>
+                <p><strong>Description:</strong> Calculates the relationship between real, reactive, and apparent power in an AC circuit.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>i</code>: First power value as a string with units (e.g., "500wat", "300var", "100vam").</li>
+                    <li><code>r</code>: Second power value as a string with units (e.g., "400var", "200wat", "150vam").</li>
+                </ul>
+                <p><strong>Returns:</strong> The calculated value based on the relationship between the two power types. Returns <code>-1</code> if the input is invalid.</p>
+                <div class="example">
+                    <pre><code>float result = relation_real_reactive_apparent("500wat", "300var");
+// result = sqrt(500 + 300) = 28.28 (assuming valid inputs and no errors)</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>28. float electric_charge(string i, string r)</h3>
+                <p><strong>Description:</strong> Calculates the electric charge based on the relationship between time, current, and charge.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>i</code>: First value as a string with units (e.g., "10sec", "5amp", "15cou").</li>
+                    <li><code>r</code>: Second value as a string with units (e.g., "2amp", "3cou", "4sec").</li>
+                </ul>
+                <p><strong>Returns:</strong> The calculated electric charge (in coulombs or related units) based on the inputs. Returns <code>-1</code> if the input is invalid.</p>
+                <div class="example">
+                    <pre><code>float charge = electric_charge("10sec", "5amp");
+// charge = 10 / 5 = 2 (assuming valid inputs)</code></pre>
+                </div>
+            </div>
+
+            <div>
+                <h3>29. float Coulombs_Law(float q1, float q2, float r)</h3>
+                <p><strong>Description:</strong> Computes the electrostatic force between two charges using Coulomb's Law.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>q1</code>: The first charge (in coulombs).</li>
+                    <li><code>q2</code>: The second charge (in coulombs).</li>
+                    <li><code>r</code>: The distance between the charges (in meters).</li>
+                </ul>
+                <p><strong>Returns:</strong> The force between the charges (in newtons).</p>
+                <div class="example">
+                    <pre><code>float force = Coulombs_Law(1.6e-19, -1.6e-19, 0.1);
+// force = some value in newtons</code></pre>
+                </div>
+            </div>
+            <div>
+                <h3>30. float efficiency(float in, float out)</h3>
+                <p><strong>Description:</strong> Calculates the efficiency of a system based on the input and output power.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>in</code>: Input power to the system (in watts or any consistent unit).</li>
+                    <li><code>out</code>: Output power from the system (in the same unit as input).</li>
+                </ul>
+                <p><strong>Returns:</strong> The efficiency of the system as a percentage.</p>
+                <div class="example">
+                    <pre><code>float eff = efficiency(100.0, 80.0);
+// eff = 80.0 (which is 80%)</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>31. float Power_factor(float power_real, float apparent_power)</h3>
+                <p><strong>Description:</strong> Calculates the power factor of a system, which is the ratio of real power to apparent power.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>power_real</code>: Real power in the system (in watts).</li>
+                    <li><code>apparent_power</code>: Apparent power in the system (in volt-amperes).</li>
+                </ul>
+                <p><strong>Returns:</strong> The power factor of the system, a dimensionless number between 0 and 1.</p>
+                <div class="example">
+                    <pre><code>float pf = Power_factor(300.0, 400.0);
+            // pf = 300.0 / 400.0 = 0.75</code></pre>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Electronics.h Library | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
